@@ -56,7 +56,7 @@
     
       <section class="hero">
           <h1 class="hero-title-h1 white-text">Эффективные решения для вашего бизнеса</h1>
-          <button class="button" type="button">Заказать услугу</button>
+          <button class="button" type="button" data-modal-open>Заказать услугу</button>
       </section>
     
 <!--Секция "О нас"-->
@@ -111,9 +111,18 @@
           <div class="container">
           <h2 class="section-title-h2">Чем мы занимаемся</h2>
           <ul class="list what-we-do-list card-set">
-              <li class="what-we-do-item card-item"><img src="./images/img1.jpg" alt="Пишем код" width="370" height="294"></li>
-              <li class="what-we-do-item card-item"><img src="./images/img2.jpg" alt="Создаем дизайн продукта" width="370" height="294"></li>
-              <li class="what-we-do-item card-item"><img src="./images/img3.jpg" alt="Выбираем лучший вариант" width="370" height="294"></li>
+              <li class="what-we-do-item card-item">
+                  <img src="./images/img1.jpg" alt="Пишем код" width="370" height="294">
+                  <p class="what-we-do-description">Десктопные приложения</p>
+                </li>
+              <li class="what-we-do-item card-item">
+                  <img src="./images/img2.jpg" alt="Создаем дизайн продукта" width="370" height="294">
+                  <p class="what-we-do-description">Мобильные приложения</p>
+                </li>
+              <li class="what-we-do-item card-item">
+                  <img src="./images/img3.jpg" alt="Выбираем лучший вариант" width="370" height="294">
+                  <p class="what-we-do-description">Дизайнерские решения</p>
+                </li>
           </ul>
           </div>
       </section>
@@ -429,5 +438,19 @@
          </div>
         </div>
     </footer>
+
+    <!--Модальное окно-->
+
+    <div class="backdrop is-hidden" data-modal>
+      <div class="modal">
+          <button type="button" class="close-button-modal" data-modal-close>
+            <svg width="11" height="11">
+                <use href="./images/icons.svg#icon-close"></use>
+            </svg>
+          </button>          
+      </div>
+    </div>
+
+    <script src="./js/modal.js"></script>
 </body>
 </html>

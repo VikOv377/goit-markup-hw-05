@@ -14,6 +14,9 @@
     --card-gap-left: 30px;
     --team-social-icons: #AFB1B8;
     --card-item: 4;
+    --transitions-time: 250ms;
+    --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    --delay: 0ms;
 }
 
 body {
@@ -139,10 +142,46 @@ img {
     color: var(--black-text-color);
 }
 
+.header-list-item {
+    position: relative;
+}
+
 .header-nav .link {
     display: block;
     padding-top: 32px;
     padding-bottom: 32px;
+
+    transition: color var(--transitions-time) var(--timing-function) var(--delay);
+}
+
+.header-nav .link.current {
+
+}
+
+.header-nav .link.current::after {
+    display: block;
+    
+    content: '';
+    width: 100%;
+    height: 4px;
+    background-color: var(--color-hover);
+    border-radius: 2px;
+
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    opacity: 0;
+    transform: scaleX(0);
+
+    transition: 
+    opacity var(--transitions-time) var(--timing-function) var(--delay),
+    transform var(--transitions-time) var(--timing-function) var(--delay);
+}
+
+.header-nav .link.current:hover::after {
+    opacity: 1;
+    transform: scaleX(1);
 }
 
 .header-list-nav {
@@ -160,6 +199,7 @@ img {
 .header-list-nav .header-list-item:not(:last-child) {
     margin-right: 50px;
 }
+
 
 .contacts {
     display: flex;
@@ -182,6 +222,10 @@ img {
 .contacts .link:hover,
 .contacts .link:focus {
     color: var(--color-hover);
+}
+
+.contacts .link {
+    transition: color var(--transitions-time) var(--timing-function) var(--delay);
 }
 
 .contacts-link {
@@ -309,6 +353,26 @@ img {
     --card-item: 3;
 }
 
+.what-we-do-item {
+    position: relative;
+}
+
+.what-we-do-description {
+    display: flex;
+    
+
+    position: absolute;
+
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.14;
+    text-align: center;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--white-text-color);
+    
+}
+
 /* Секция "Наша команда" */
 
 .our-team {
@@ -366,6 +430,9 @@ img {
     width: 44px;
     height: 44px;
     border-radius: 50%;
+
+    transition: color var(--transitions-time) var(--timing-function) var(--delay),
+    background-color var(--transitions-time) var(--timing-function) var(--delay);
 }
 
 .footer .our-team-social-link {
@@ -399,6 +466,9 @@ img {
     height: 92px;
     border-radius: 4px;
     border: 1px solid var(--team-social-icons);
+
+    transition: color var(--transitions-time) var(--timing-function) var(--delay),
+    border var(--transitions-time) var(--timing-function) var(--delay);
 }
 
 .regular-clients-link:hover,
@@ -430,6 +500,8 @@ img {
 
 .address-link {
     color: rgba(255, 255, 255, 0.6);
+
+    transition: color var(--transitions-time) var(--timing-function) var(--delay);
 }
 .address-link[target="_blank"] {
     color: var(--white-text-color);
@@ -513,6 +585,12 @@ img {
     cursor: pointer;
     
     padding: 6px 22px;
+
+    transition: 
+    color var(--transitions-time) var(--timing-function) var(--delay),
+    background-color var(--transitions-time) var(--timing-function) var(--delay),
+    box-shadow var(--transitions-time) var(--timing-function) var(--delay),
+    border-radius var(--transitions-time) var(--timing-function) var(--delay);
 }
 
 .choice {
@@ -526,8 +604,8 @@ img {
     margin-left: 8px;
 }
 
-.choice .button-radio:hover,
-.choice .button-radio:focus {
+.button-radio:hover,
+.button-radio:focus {
     color: var(--white-text-color);
     background-color: var(--color-hover);
     box-shadow: 
@@ -535,6 +613,11 @@ img {
     0px 1px 10px rgba(0, 0, 0, 0.30),
     0px 2px 10px rgba(0, 0, 0, 0.30);
     border-radius: 4px;
+}
+
+.button-radio.current {
+    background-color: var(--color-hover);
+    color: var(--white-text-color);
 }
 
 .project-name {
@@ -554,6 +637,8 @@ img {
 .project-link {
     display: flex;
     flex-direction: column;
+
+    transition: box-shadow var(--transitions-time) var(--timing-function) var(--delay);
 }
 
 .project-link:hover,
@@ -575,4 +660,132 @@ img {
     border-bottom: 1px solid var(--color-of-portfolio-box);
     border-left: 1px solid var(--color-of-portfolio-box);
     border-right: 1px solid var(--color-of-portfolio-box);
+}
+
+.projects-thumb {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.projects-thumb::before {
+    position: absolute;
+    display: inline-block;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: rgba(33, 150, 243, 0.9);
+    opacity: 0;
+
+    transform: translateY(100%);
+
+    transition: 
+    opacity var(--transitions-time) var(--timing-function) var(--delay),
+    transform var(--transitions-time) var(--timing-function) var(--delay);
+}
+
+.project-link:hover .projects-thumb::before,
+.project-link:focus .projects-thumb::before {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.our-project-text {
+    position: absolute;
+    
+    width: 100%;
+    height: 100%;
+
+    padding: 63px 24px;
+
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.56;
+    letter-spacing: 0.03em;
+    color: var(--white-text-color);
+
+    opacity: 0;
+
+    transform: translateY(100%);
+
+    transition: 
+    opacity var(--transitions-time) var(--timing-function) var(--delay),
+    transform var(--transitions-time) var(--timing-function) var(--delay);
+}
+
+.project-link:hover .our-project-text,
+.project-link:focus .our-project-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --------------------Модальное окно-------------------- */
+
+.backdrop {
+    position: fixed;
+    
+    top: 0;
+    left: 0;
+   
+    width: 100%;
+    height: 100%;
+    
+    background: rgba(0, 0, 0, 0.2);
+
+    transition: 
+    opacity 600ms var(--timing-function) var(--delay),
+    visibility 600ms var(--timing-function) var(--delay);
+}
+
+.backdrop.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.modal {
+    position: absolute;
+    
+    top: 50%;
+    left: 50%;
+    
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    
+    min-width: 528px;
+    min-height: 581px;
+    background-color: var(--white-text-color);
+    box-shadow: 
+    0px 1px 3px rgba(0, 0, 0, 0.12), 
+    0px 1px 1px rgba(0, 0, 0, 0.14), 
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    }
+
+.close-button-modal {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 30px;
+    height: 30px;
+    
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+
+    cursor: pointer;
+
+    transition: fill var(--transitions-time) var(--timing-function) var(--delay);
+}
+
+.close-button-modal:hover, 
+.close-button-modal:focus {
+    fill: var(--color-hover);
 }
