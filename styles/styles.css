@@ -154,10 +154,6 @@ img {
     transition: color var(--transitions-time) var(--timing-function) var(--delay);
 }
 
-.header-nav .link.current {
-
-}
-
 .header-nav .link.current::after {
     display: block;
     
@@ -200,7 +196,6 @@ img {
 .header-list-nav .header-list-item:not(:last-child) {
     margin-right: 50px;
 }
-
 
 .contacts {
     display: flex;
