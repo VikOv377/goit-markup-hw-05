@@ -136,15 +136,14 @@ img {
 
 .header-nav .link.current {
     color: var(--color-hover);
+
+    position: relative;
 }
 
 .header-nav {
     color: var(--black-text-color);
 }
 
-.header-list-item {
-    position: relative;
-}
 
 .header-nav .link {
     display: block;
@@ -736,7 +735,7 @@ img {
 }
 
 .backdrop.is-hidden .modal {
-    transform: translate(-50%, -50%) scale(0.2);
+    transform: translate(-50%, -50%) scale(1);
     opacity: 0;
 }
 
@@ -755,7 +754,7 @@ img {
     0px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 
-    transform: translate(-50%, -50%) scale(0.8);
+    transform: translate(-50%, -50%) scale(1);
     opacity: 1;
     
     transition: 
